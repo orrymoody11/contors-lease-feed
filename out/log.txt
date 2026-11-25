@@ -11,7 +11,7 @@ tests exit=0
 + npm init -y
 + npm install playwright
 
-added 2 packages, and audited 3 packages in 2s
+added 2 packages, and audited 3 packages in 1s
 
 found 0 vulnerabilities
 + npx playwright install --with-deps chromium
