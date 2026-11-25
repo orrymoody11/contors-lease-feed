@@ -1,0 +1,31 @@
+Sample header text for testing.
+TEXAS
+459.5 acres North of Cass
+Sample text that names Cass County.
+33.20934, -94.05907
+Annual Fee - $13800
+2 Primitive Lots on Caddo Lake
+Sample text for a camping lot that is not a lease with acres.
+Marion County, Texas
+32.7219614, -94.0866569
+Annual Fee - $1500 each
+ARKANSAS
+80 acres in Hempstead County
+Sample text.
+33.75945, -93.78384
+Annual Fee - $2400
+LOUISIANA
+  240 acres East of Saline
+Sample text that names Bienville Parish here.
+32.15645, -92.92971
+Annual Fee - $7200
+200 acres near Rodessa in Caddo Parish
+This is actually 2 tracts of 40 and 160 acres.
+33.00796, -93.96954  (40)
+32.99301, -93.97251  (160)
+  Annual Fee - $6000
+88.5 acres West of Vivian
+This Caddo Parish tract is sample text.
+32.89459, -94.04210
+  Annual Fee - $2700
+   Contact Us

@@ -1,0 +1,13 @@
+Sample header text for testing.
+DATE
+STATE
+COUNTY
+ACRES
+PRICE
+CONTACT
+EMAIL/PHONE
+DESCRIPTION
+10/28/2026 AL Russell 600 $6,000. Turkey season only Sample Contact Sample text. This is a turkey lease only.
+9/2/2026 MS Tishomingo 80 $493/season including insurance Growing Assets Email Only Lat / Long: 34.744493 / -87.155137
+Sample text.
+P.O. Box 0000
