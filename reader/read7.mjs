@@ -3,6 +3,7 @@
 import { chromium } from 'playwright';
 import fs from 'node:fs';
 import * as S from './sources.mjs';
+import * as M from './more.mjs';
 
 const SOURCES = [
   { id: 'forecon', name: 'FORECON', url: 'https://www.foreconinc.com/services/huntlease/available-huntlease-listings', parse: (s, p) => S.parseForecon(s, p.text, p.links) },
@@ -11,6 +12,7 @@ const SOURCES = [
   { id: 'larson', name: 'Larson & McGowin', url: 'https://larsonmcgowin.com/properties/', parse: (s, p) => S.parseLarson(s, p.text, p.links) },
   { id: 'nebraska', name: 'Nebraska Board of Educational Lands and Funds', url: 'https://belf.nebraska.gov/recleases.html', parse: (s, p) => S.parseNebraska(s, p.text, p.links) },
   { id: 'growingassets', name: 'Growing Assets', url: 'https://growingassetsllc.com/hunting-leases/', parse: (s, p) => S.parseGrowingAssets(s, p.text, p.links) },
+  { id: 'afm', name: 'American Forest Management', url: 'https://afmhuntportal.com/huntersportal', parse: (s, p) => M.parseAfm(s, p.text) },
   { id: 'ushunts', name: 'US Hunts', url: 'https://ushunts.com/collections/available-leases', parse: (s, p) => S.parseUsHunts(s, p.text, p.products, p.states) },
 ];
 
@@ -18,6 +20,7 @@ async function grab(ctx, url) {
   const page = await ctx.newPage();
   const resp = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
   await page.waitForTimeout(4000);
+  await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
   const text = await page.innerText('body');
   const links = await page.$$eval('a[href]', as => as.map(a => ({ href: a.href, text: (a.textContent || '').trim().slice(0, 80) })));
   return { page, http: resp ? resp.status() : null, text, links };
@@ -72,6 +75,6 @@ try {
 
 fs.mkdirSync('out', { recursive: true });
 const finished = new Date().toISOString();
-fs.writeFileSync('out/report7.json', JSON.stringify({ fatal, started, finished, sources: results.map(r => ({ id: r.id, ok: r.ok, http: r.http, count: r.leases.length, expected: r.expected, problem: r.problem || null, skipped: r.skipped || [], stateFilter: r.stateFilter })) }, null, 1));
+fs.writeFileSync('out/report7.json', JSON.stringify({ fatal, started, finished, sources: results.map(r => ({ id: r.id, name: r.name, ok: r.ok, http: r.http, count: r.leases.length, expected: r.expected, problem: r.problem || null, skipped: r.skipped || [], stateFilter: r.stateFilter })) }, null, 1));
 fs.writeFileSync('out/feed7.json', JSON.stringify({ updated: finished, leases: results.flatMap(r => r.leases) }, null, 1));
 console.log(JSON.stringify(results.map(r => [r.id, r.ok, r.leases.length, r.expected, r.problem || '']), null, 1));

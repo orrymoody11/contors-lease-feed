@@ -5,7 +5,7 @@ mkdir -p out
 {
   set -x
   node -v
-  node reader/test7.mjs && node reader/test_combine.mjs
+  node reader/test7.mjs && node reader/test_more.mjs && node reader/test_combine.mjs
   echo "tests exit=$?"
   npm init -y >/dev/null 2>&1
   npm install playwright && npx playwright install --with-deps chromium >/dev/null 2>&1 && node reader/proof.mjs

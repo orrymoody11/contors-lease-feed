@@ -11,6 +11,8 @@ const SOURCES = (process.env.SOURCES_JSON ? JSON.parse(process.env.SOURCES_JSON)
   { id: 'kingwood', name: 'Kingwood Forestry',            url: 'https://hunt.kingwoodforestry.com/AvailableAreas/SearchProperties.aspx' },
   { id: 'ctc',      name: 'Coastal Timberlands Company',  url: 'https://ctchunting.com/AvailableAreas/SearchProperties.aspx' },
   { id: 'bird',     name: 'Bird Forestry',                url: 'https://hunt.birdforestry.com/AvailableAreas/SearchProperties.aspx' },
+  { id: 'campbell', name: 'Campbell Global',              url: 'https://www.cglease.com/AvailableAreas/SearchProperties.aspx' },
+  { id: 'tir',      name: 'TIR Hunting Leases',           url: 'https://rlms.myoutdooragent.com/tir_HL/AvailableAreas/SearchProperties.aspx' },
 ]);
 
 export const ACCESS = /\b(obtain|arrange|secure|provide|get)\b[^.\n]{0,40}\baccess\b|\bno (legal |deeded |road )?access\b|\baccess (is )?not (provided|available|included)\b/i;
@@ -22,7 +24,8 @@ export function parseResults(text) {
     out.push({
       unit:   g(/^\s*([^\s]+)/),
       acres:  g(/Acres:\s*([\d,.]+)/),
-      place:  g(/Location:\s*([A-Za-z .'\-]+,\s*[A-Z]{2})/),
+      // "Autauga County, AL" on most sites; Campbell Global writes "Dallas-AR"
+      place:  (g(/Location:\s*([A-Za-z .']+(?:-[A-Za-z .']+)*?(?:,\s*|-)[A-Z]{2})\b/) || '').replace(/\s*-\s*([A-Z]{2})$/, ', $1') || null,
       term:   g(/Term:\s*(\d{1,2}\/\d{1,2}\/\d{4}\s*to\s*\d{1,2}\/\d{1,2}\/\d{4}|[A-Z][a-z]{2} \d{1,2}, \d{4}\s*to\s*[A-Z][a-z]{2} \d{1,2}, \d{4})/),
       price:  g(/Price:\s*(\$[\d,]+(?:\.\d+)?)/),
       // the lister's comment is not copied; only whether it says the hunter must arrange access

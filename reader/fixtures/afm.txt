@@ -1,0 +1,41 @@
+Available Properties
+Property ID:100001
+
+County: Cameron
+State: Pennsylvania
+District: Placeholder
+Number of Tracts:1
+
+289.59 Acres / $3,115.98
+Lease Type
+
+Hunt Lease
+View Details
+
+Property Description: placeholder
+Property ID:100002
+
+County: Beauregard
+State: Louisiana
+District: Placeholder
+Number of Tracts:2
+
+169.13 Acres / $1,139.94
+Lease Type
+
+Hunt Lease
+View Details
+
+Property Description: null
+Property ID:100003
+
+County: Ashley
+State: Arkansas
+Number of Tracts:1
+
+50 Acres / $500.00
+Lease Type
+
+Camp Lease
+View Details
+Copyright
