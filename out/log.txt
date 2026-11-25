@@ -1,0 +1,125 @@
++ node -v
+v22.23.5
++ node reader/test7.mjs
+all reader tests passed
++ node reader/test_combine.mjs
+all combine tests passed
++ echo 'tests exit=0'
+tests exit=0
++ npm init -y
++ npm install playwright
+
+added 2 packages, and audited 3 packages in 1s
+
+found 0 vulnerabilities
++ npx playwright install --with-deps chromium
++ node reader/proof.mjs
+[
+ [
+  "premier",
+  true,
+  28,
+  28,
+  ""
+ ],
+ [
+  "greendiamond",
+  true,
+  31,
+  31,
+  ""
+ ],
+ [
+  "legacy",
+  true,
+  3,
+  3,
+  ""
+ ],
+ [
+  "kingwood",
+  true,
+  2,
+  2,
+  ""
+ ],
+ [
+  "ctc",
+  true,
+  2,
+  2,
+  ""
+ ],
+ [
+  "bird",
+  true,
+  1,
+  1,
+  ""
+ ]
+]
++ echo 'platform readers exit=0'
+platform readers exit=0
++ node reader/read7.mjs
+[
+ [
+  "forecon",
+  true,
+  7,
+  7,
+  ""
+ ],
+ [
+  "bullcreek",
+  true,
+  5,
+  5,
+  ""
+ ],
+ [
+  "afoa",
+  true,
+  2,
+  2,
+  ""
+ ],
+ [
+  "larson",
+  true,
+  1,
+  1,
+  ""
+ ],
+ [
+  "nebraska",
+  true,
+  1,
+  1,
+  ""
+ ],
+ [
+  "growingassets",
+  true,
+  2,
+  2,
+  ""
+ ],
+ [
+  "ushunts",
+  true,
+  7,
+  7,
+  ""
+ ]
+]
++ echo 'other readers exit=0'
+other readers exit=0
++ node reader/combine.mjs
+{
+ "count": 89,
+ "states": 17,
+ "ok": true,
+ "issues": []
+}
++ echo 'combine exit=0'
+combine exit=0

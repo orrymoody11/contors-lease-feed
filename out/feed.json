@@ -1,0 +1,608 @@
+{
+ "updated": "2026-11-25T21:31:50.233Z",
+ "leases": [
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "103400501",
+   "acres": "46.00",
+   "place": "Perquimans County, NC",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$531.76",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "161200901",
+   "acres": "1,482.00",
+   "place": "Washington County, NY",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$10,350.00",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "122401101",
+   "acres": "157.00",
+   "place": "Grant County, AR",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$1,873.01",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "401100901",
+   "acres": "51.00",
+   "place": "Decatur County, TN",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$546.21",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "122403001",
+   "acres": "241.00",
+   "place": "Hot Spring County, AR",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$2,723.30",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "402120101",
+   "acres": "78.00",
+   "place": "Tallapoosa County, AL",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$970.32",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "122409901",
+   "acres": "143.00",
+   "place": "Pike County, AR",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$1,585.87",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "402200102",
+   "acres": "263.00",
+   "place": "Randolph County, GA",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$3,768.79",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "128754501",
+   "acres": "390.00",
+   "place": "Hardin County, TN",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$2,581.80",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "407105901",
+   "acres": "122.00",
+   "place": "St. Tammany County, LA",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$1,449.36",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "136100406",
+   "acres": "29.00",
+   "place": "Bowie County, TX",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$370.91",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "407106301",
+   "acres": "42.00",
+   "place": "St. Tammany County, LA",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$523.74",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "142300601",
+   "acres": "10.00",
+   "place": "Polk County, TX",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$202.00",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "52202201",
+   "acres": "116.00",
+   "place": "Grant County, AR",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$1,386.20",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "154550301",
+   "acres": "94.00",
+   "place": "Liberty County, FL",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$673.98",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "75540901",
+   "acres": "163.00",
+   "place": "Montgomery County, MS",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$2,265.70",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "154560501",
+   "acres": "2,300.00",
+   "place": "Gulf County, FL",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$19,700.00",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "75541101",
+   "acres": "94.00",
+   "place": "Montgomery County, MS",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$1,744.64",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "154560601",
+   "acres": "693.00",
+   "place": "Gulf County, FL",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$7,796.25",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "75541801",
+   "acres": "158.00",
+   "place": "Montgomery County, MS",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$2,249.92",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "161200101",
+   "acres": "30.00",
+   "place": "Oswego County, NY",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$210.00",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "78781501",
+   "acres": "331.00",
+   "place": "Oswego County, NY",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$2,979.00",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "161200401",
+   "acres": "104.00",
+   "place": "Lewis County, NY",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$728.00",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "78782301",
+   "acres": "109.00",
+   "place": "Oneida County, NY",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$3,011.67",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "161200601",
+   "acres": "204.00",
+   "place": "Herkimer County, NY",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$1,428.00",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "78782901",
+   "acres": "26.00",
+   "place": "Oneida County, NY",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$234.00",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "161200801",
+   "acres": "27.00",
+   "place": "Chenango County, NY",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$189.00",
+   "ownAccess": false
+  },
+  {
+   "source": "Premier Hunting Leases",
+   "unit": "81810301",
+   "acres": "189.00",
+   "place": "Delaware County, NY",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$1,512.00",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "BH-10035",
+   "acres": "556",
+   "place": "Jefferson County, AL",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$7,511.56",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MN-10315",
+   "acres": "39",
+   "place": "Kemper County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$479.31",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "BH-10069",
+   "acres": "616",
+   "place": "Jefferson County, AL",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$8,433.04",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MN-10316",
+   "acres": "56",
+   "place": "Kemper County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$782.88",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "BH-10091",
+   "acres": "326",
+   "place": "Tuscaloosa County, AL",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$4,016.32",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MN-10319",
+   "acres": "80",
+   "place": "Kemper County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$800.00",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "BH-10100",
+   "acres": "2,323",
+   "place": "Jefferson County, AL",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$25,088.40",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MN-10321",
+   "acres": "155",
+   "place": "Lauderdale County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$2,094.05",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "BH-10115",
+   "acres": "175",
+   "place": "Tuscaloosa County, AL",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$2,266.25",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MN-10326",
+   "acres": "126",
+   "place": "Winston County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$1,666.98",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "BH-10130",
+   "acres": "884",
+   "place": "Jefferson County, AL",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$11,925.16",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MN-10327",
+   "acres": "159",
+   "place": "Winston County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$2,103.57",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "BH-10133",
+   "acres": "52",
+   "place": "Jefferson County, AL",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$701.48",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MN-10332",
+   "acres": "16",
+   "place": "Winston County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$217.28",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "BH-10137",
+   "acres": "159",
+   "place": "Jefferson County, AL",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$2,144.91",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MN-10333",
+   "acres": "40",
+   "place": "Winston County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$559.20",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "BS-10184",
+   "acres": "60",
+   "place": "Russell County, AL",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$755.40",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MN-10336",
+   "acres": "41",
+   "place": "Winston County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$600.24",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "DM-10057",
+   "acres": "94",
+   "place": "Escambia County, AL",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$1,259.60",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MS-10318",
+   "acres": "99",
+   "place": "Clarke County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$1,216.71",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "GW-10111",
+   "acres": "168",
+   "place": "Greenwood County, SC",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$2,503.20",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MS-10324",
+   "acres": "80",
+   "place": "Jasper County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$1,032.00",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MN-10100",
+   "acres": "38",
+   "place": "Noxubee County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$469.68",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MS-10325",
+   "acres": "42",
+   "place": "Jasper County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$609.42",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MN-10302",
+   "acres": "37",
+   "place": "Winston County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$469.90",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MS-10334",
+   "acres": "41",
+   "place": "Smith County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$594.91",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MN-10306",
+   "acres": "80",
+   "place": "Choctaw County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$1,160.80",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MS-10336",
+   "acres": "98",
+   "place": "Smith County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$1,322.02",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MN-10310",
+   "acres": "41",
+   "place": "Kemper County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$500.20",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MS-10339",
+   "acres": "9",
+   "place": "Smith County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$126.99",
+   "ownAccess": false
+  },
+  {
+   "source": "Green Diamond Recreation",
+   "unit": "MN-10311",
+   "acres": "164",
+   "place": "Kemper County, MS",
+   "term": "6/1/2026 to 5/31/2027",
+   "price": "$2,356.68",
+   "ownAccess": false
+  },
+  {
+   "source": "Legacy Wildlife Services",
+   "unit": "AL-CHA-178",
+   "acres": "40",
+   "place": "Randolph County, AL",
+   "term": "6/1/2026 to 6/30/2027",
+   "price": "$500.00",
+   "ownAccess": false
+  },
+  {
+   "source": "Legacy Wildlife Services",
+   "unit": "FL-APA-0056",
+   "acres": "120",
+   "place": "Washington County, FL",
+   "term": "11/1/2026 to 6/30/2027",
+   "price": "$600.00",
+   "ownAccess": false
+  },
+  {
+   "source": "Legacy Wildlife Services",
+   "unit": "AR-CHS-0043",
+   "acres": "400",
+   "place": "Independence County, AR",
+   "term": "7/1/2026 to 6/30/2027",
+   "price": "$20,000.00",
+   "ownAccess": false
+  },
+  {
+   "source": "Kingwood Forestry",
+   "unit": "MC-AR-3043-01",
+   "acres": "71",
+   "place": "Ashley County, AR",
+   "term": "6/15/2026 to 6/14/2027",
+   "price": "$475.70",
+   "ownAccess": false
+  },
+  {
+   "source": "Kingwood Forestry",
+   "unit": "MC-AR-3081-01",
+   "acres": "3",
+   "place": "Ashley County, AR",
+   "term": "6/15/2026 to 6/14/2027",
+   "price": "$21.87",
+   "ownAccess": false
+  },
+  {
+   "source": "Coastal Timberlands Company",
+   "unit": "60070001",
+   "acres": "11.00",
+   "place": "Webster County, WV",
+   "term": "Jun 01, 2026 to May 31, 2027",
+   "price": "$119.00",
+   "ownAccess": true
+  },
+  {
+   "source": "Coastal Timberlands Company",
+   "unit": "60551001",
+   "acres": "64.00",
+   "place": "Doddridge County, WV",
+   "term": "Jun 01, 2026 to May 31, 2027",
+   "price": "$442.00",
+   "ownAccess": true
+  },
+  {
+   "source": "Bird Forestry",
+   "unit": "167",
+   "acres": "80",
+   "place": "Bienville County, LA",
+   "term": "8/1/2026 to 7/31/2027",
+   "price": "$919.60",
+   "ownAccess": false
+  }
+ ]
+}

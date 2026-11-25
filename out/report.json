@@ -1,0 +1,85 @@
+{
+ "fatal": null,
+ "started": "2026-11-25T21:31:27.254Z",
+ "finished": "2026-11-25T21:31:50.233Z",
+ "sources": [
+  {
+   "id": "premier",
+   "name": "Premier Hunting Leases",
+   "ok": true,
+   "stated": 28,
+   "pages": 1,
+   "note": "",
+   "http": 200,
+   "title": "Search Properties | Premier Hunting Leases",
+   "complete": true,
+   "count": 28,
+   "missing": 0
+  },
+  {
+   "id": "greendiamond",
+   "name": "Green Diamond Recreation",
+   "ok": true,
+   "stated": 31,
+   "pages": 1,
+   "note": "",
+   "http": 200,
+   "title": "Green Diamond",
+   "complete": true,
+   "count": 31,
+   "missing": 0
+  },
+  {
+   "id": "legacy",
+   "name": "Legacy Wildlife Services",
+   "ok": true,
+   "stated": 3,
+   "pages": 1,
+   "note": "",
+   "http": 200,
+   "title": "Search Properties",
+   "complete": true,
+   "count": 3,
+   "missing": 0
+  },
+  {
+   "id": "kingwood",
+   "name": "Kingwood Forestry",
+   "ok": true,
+   "stated": 2,
+   "pages": 1,
+   "note": "",
+   "http": 200,
+   "title": "Search Properties",
+   "complete": true,
+   "count": 2,
+   "missing": 0
+  },
+  {
+   "id": "ctc",
+   "name": "Coastal Timberlands Company",
+   "ok": true,
+   "stated": 2,
+   "pages": 1,
+   "note": "",
+   "http": 200,
+   "title": "Search Properties",
+   "complete": true,
+   "count": 2,
+   "missing": 0
+  },
+  {
+   "id": "bird",
+   "name": "Bird Forestry",
+   "ok": true,
+   "stated": 1,
+   "pages": 1,
+   "note": "",
+   "http": 200,
+   "title": "Search Properties Bird Forestry Hunting Leases",
+   "complete": true,
+   "count": 1,
+   "missing": 0
+  }
+ ]
+}

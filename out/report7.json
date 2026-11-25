@@ -1,0 +1,93 @@
+{
+ "fatal": null,
+ "started": "2026-11-25T21:31:50.469Z",
+ "finished": "2026-11-25T21:33:02.806Z",
+ "sources": [
+  {
+   "id": "forecon",
+   "ok": true,
+   "http": 200,
+   "count": 7,
+   "expected": 7,
+   "problem": null,
+   "skipped": []
+  },
+  {
+   "id": "bullcreek",
+   "ok": true,
+   "http": 200,
+   "count": 5,
+   "expected": 5,
+   "problem": null,
+   "skipped": [
+    "2 Primitive Lots on Caddo Lake"
+   ]
+  },
+  {
+   "id": "afoa",
+   "ok": true,
+   "http": 200,
+   "count": 2,
+   "expected": 2,
+   "problem": null,
+   "skipped": []
+  },
+  {
+   "id": "larson",
+   "ok": true,
+   "http": 200,
+   "count": 1,
+   "expected": 1,
+   "problem": null,
+   "skipped": []
+  },
+  {
+   "id": "nebraska",
+   "ok": true,
+   "http": 200,
+   "count": 1,
+   "expected": 1,
+   "problem": null,
+   "skipped": [
+    "Boyd County 16-33-10W",
+    "Boyd County 25-35-11W",
+    "Brown County 36-28-22W",
+    "Dawes County 16-31-49W",
+    "Deuel County 34-13-42W",
+    "Jefferson County 36-01-01E",
+    "Jefferson County 16-01-02E",
+    "Jefferson County 36-01-02E",
+    "Jefferson County 12-01-03E",
+    "Lincoln County 16-12-28W",
+    "Rock County 16,21-32N-17W",
+    "Wheeler County 16-21-12W"
+   ]
+  },
+  {
+   "id": "growingassets",
+   "ok": true,
+   "http": 200,
+   "count": 2,
+   "expected": 2,
+   "problem": null,
+   "skipped": []
+  },
+  {
+   "id": "ushunts",
+   "ok": true,
+   "http": 200,
+   "count": 7,
+   "expected": 7,
+   "problem": null,
+   "skipped": [
+    "Metal Heavy Duty, No Hunting Sign - 5pack",
+    "Campsite for USHunts Lease Holders (Dewey and Custer County Only)"
+   ],
+   "stateFilter": [
+    "filter.p.m.custom.state=Arizona",
+    "filter.p.m.custom.state=Kansas",
+    "filter.p.m.custom.state=Oklahoma"
+   ]
+  }
+ ]
+}
