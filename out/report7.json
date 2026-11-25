@@ -1,10 +1,11 @@
 {
  "fatal": null,
- "started": "2026-11-25T21:53:10.109Z",
- "finished": "2026-11-25T21:54:19.470Z",
+ "started": "2026-11-25T22:37:37.795Z",
+ "finished": "2026-11-25T22:39:18.787Z",
  "sources": [
   {
    "id": "forecon",
+   "name": "FORECON",
    "ok": true,
    "http": 200,
    "count": 7,
@@ -14,6 +15,7 @@
   },
   {
    "id": "bullcreek",
+   "name": "Bull Creek Leasing",
    "ok": true,
    "http": 200,
    "count": 5,
@@ -25,6 +27,7 @@
   },
   {
    "id": "afoa",
+   "name": "Alabama Forest Owners' Association",
    "ok": true,
    "http": 200,
    "count": 2,
@@ -34,6 +37,7 @@
   },
   {
    "id": "larson",
+   "name": "Larson & McGowin",
    "ok": true,
    "http": 200,
    "count": 1,
@@ -43,6 +47,7 @@
   },
   {
    "id": "nebraska",
+   "name": "Nebraska Board of Educational Lands and Funds",
    "ok": true,
    "http": 200,
    "count": 1,
@@ -65,6 +70,7 @@
   },
   {
    "id": "growingassets",
+   "name": "Growing Assets",
    "ok": true,
    "http": 200,
    "count": 2,
@@ -73,7 +79,18 @@
    "skipped": []
   },
   {
+   "id": "afm",
+   "name": "American Forest Management",
+   "ok": true,
+   "http": 200,
+   "count": 10,
+   "expected": 10,
+   "problem": null,
+   "skipped": []
+  },
+  {
    "id": "ushunts",
+   "name": "US Hunts",
    "ok": true,
    "http": 200,
    "count": 7,

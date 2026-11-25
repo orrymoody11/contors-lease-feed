@@ -1,7 +1,7 @@
 {
  "fatal": null,
- "started": "2026-11-25T21:52:40.768Z",
- "finished": "2026-11-25T21:53:09.745Z",
+ "started": "2026-11-25T22:36:55.630Z",
+ "finished": "2026-11-25T22:37:37.450Z",
  "sources": [
   {
    "id": "premier",
@@ -79,6 +79,32 @@
    "title": "Search Properties Bird Forestry Hunting Leases",
    "complete": true,
    "count": 1,
+   "missing": 0
+  },
+  {
+   "id": "campbell",
+   "name": "Campbell Global",
+   "ok": true,
+   "stated": 5,
+   "pages": 1,
+   "note": "",
+   "http": 200,
+   "title": "Search Properties J.P. Morgan Natural Capital",
+   "complete": true,
+   "count": 5,
+   "missing": 0
+  },
+  {
+   "id": "tir",
+   "name": "TIR Hunting Leases",
+   "ok": true,
+   "stated": 2,
+   "pages": 1,
+   "note": "",
+   "http": 200,
+   "title": "Search Properties | Premier Hunting Leases",
+   "complete": true,
+   "count": 2,
    "missing": 0
   }
  ]
