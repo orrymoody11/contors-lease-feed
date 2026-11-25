@@ -21,4 +21,12 @@ r = check(M.parseBlueSky(src('bluesky', 'B', 'u'), F('bluesky.txt'), links('blue
 assert.equal(r.ok, false);
 assert.equal(M.parseBlueSkyDetail('ADDRESS:\nANNUAL FEE: $2,280 – payable to X'), 2280);
 assert.equal(M.parseBlueSkyDetail('no fee here'), null);
-console.log('all new-reader tests passed');
+// billing period comes from the term, never assumed
+import('./combine.mjs').then(({ fromOrbis, fromOther }) => {
+  const row = { id: 'tir', name: 'TIR' }, o = (term) => fromOrbis({ unit: 'X', acres: '20', place: 'Autauga County, AL', term, price: '$150' }, row).per;
+  assert.equal(o('5/1/2025 to 5/31/2027'), 'term'); assert.equal(o('11/1/2026 to 6/30/2027'), 'term');
+  assert.equal(o('7/1/2026 to 6/30/2027'), 'year'); assert.equal(o('8/14/2026 to 8/13/2027'), 'year'); assert.equal(o(null), null);
+  const a = check(M.parseAfm(src('afm', 'American Forest Management', 'u'), F('afm.txt'))).leases[0];
+  assert.equal(fromOther({ ...a, sourceId: 'afm' }).per, null);
+  console.log('all new-reader tests passed');
+});

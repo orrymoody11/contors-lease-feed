@@ -22,13 +22,16 @@ export function fromOrbis(l, srcRow) {
   const st = m ? m[2] : null;
   const t = (l.term || '').match(/(.+?)\s*to\s*(.+)/);
   const term = t ? `${nice(dt(t[1]))} to ${nice(dt(t[2]))}` : null;
+  // the price covers the lease term: call it yearly only when the term is about a year
+  const months = t && dt(t[1]) && dt(t[2]) ? (new Date(dt(t[2])) - new Date(dt(t[1]))) / 2.63e9 : null;
+  const per = months == null ? null : months >= 10 && months <= 13.5 ? 'year' : 'term';
   return { id: `${srcRow.id}:${l.unit}`, sourceId: srcRow.id, source: srcRow.name, kind: KIND[srcRow.id] || 'timber', url: ORBIS_URL[srcRow.id] || null,
-    unit: l.unit, name: `Unit ${l.unit}`, state: st, county: countyName(m ? m[1] : null, st), acres: num(l.acres), price: num(l.price), per: 'year',
+    unit: l.unit, name: `Unit ${l.unit}`, state: st, county: countyName(m ? m[1] : null, st), acres: num(l.acres), price: num(l.price), per,
     term, note: (l.ownAccess ? 'The lister says you must arrange your own access. ' : '') + 'Find it by unit number on the lister\'s search page.' };
 }
 export function fromOther(l) {
   const out = { id: l.id, sourceId: l.sourceId, source: l.source, kind: KIND[l.sourceId] || 'timber', url: l.url, unit: l.id.split(':').slice(1).join(':'), name: l.name,
-    state: l.state, county: countyName(l.county, l.state), acres: l.acres, price: l.price, per: l.per && /season/.test(l.per) ? 'season' : l.price ? 'year' : null,
+    state: l.state, county: countyName(l.county, l.state), acres: l.acres, price: l.price, per: l.per && /season/.test(l.per) ? 'season' : l.per && /year/.test(l.per) ? 'year' : null,
     term: l.term ? l.term.replace(/\s+thru\s+/i, ' to ') : l.term, note: l.note };
   if (l.sourceId === 'growingassets' && /\/acre/i.test(l.priceText || '')) { out.pricePerAcre = num(l.priceText); out.per = 'year'; out.note = `$${out.pricePerAcre.toFixed(2)} an acre plus insurance; the lister does not say if it is billed yearly or by season.`; }
   if (l.sourceId === 'ushunts') out.note = l.note;

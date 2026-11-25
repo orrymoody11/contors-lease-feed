@@ -10,6 +10,7 @@ const lease = (src, o) => ({ id: `${src.id}:${o.unit}`, source: src.name, source
   posted: null, auction: null, lat: null, lng: null, note: o.note || null });
 
 // ---------- American Forest Management (hunt portal, several states) ----------
+// The portal gives no lease term, so no billing period is claimed for the price.
 // Each listing: "Property ID:n", "County: X", "State: Name", "<acres> Acres / $<price>", "Lease Type", "<type>".
 export function parseAfm(src, text) {
   const L = norm(text), leases = [], skipped = [];
@@ -23,7 +24,7 @@ export function parseAfm(src, text) {
     const type = ti >= 0 ? blk[ti + 1] : null;
     if (type && !/hunt/i.test(type)) { skipped.push(`${id} (${type})`); return; }
     leases.push(lease(src, { unit: id, name: `Property ${id}`, county: cleanCounty((g(/^County:\s*(.+)$/i) || [])[1]), state: stateCode((g(/^State:\s*(.+)$/i) || [])[1]),
-      acres: ap ? num(ap[1]) : null, price: ap ? num(ap[2]) : null, per: 'year', priceText: ap ? `$${ap[2]}` : null }));
+      acres: ap ? num(ap[1]) : null, price: ap ? num(ap[2]) : null, per: null, priceText: ap ? `$${ap[2]}` : null }));
   });
   // a page that never showed its list must fail, not pass as "no leases"
   return { leases, expected: starts.length ? starts.length - skipped.length : null, skipped };
