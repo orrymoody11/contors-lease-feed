@@ -11,7 +11,7 @@ tests exit=0
 + npm init -y
 + npm install playwright
 
-added 2 packages, and audited 3 packages in 1s
+added 2 packages, and audited 3 packages in 2s
 
 found 0 vulnerabilities
 + npx playwright install --with-deps chromium
@@ -128,6 +128,13 @@ platform readers exit=0
   ""
  ],
  [
+  "bluesky",
+  true,
+  5,
+  5,
+  ""
+ ],
+ [
   "ushunts",
   true,
   7,
@@ -139,7 +146,7 @@ platform readers exit=0
 other readers exit=0
 + node reader/combine.mjs
 {
- "count": 106,
+ "count": 110,
  "states": 17,
  "ok": true,
  "issues": []
