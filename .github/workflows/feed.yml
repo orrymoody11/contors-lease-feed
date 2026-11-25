@@ -16,12 +16,12 @@ concurrency:
   group: lease-feed
   cancel-in-progress: false
 jobs:
-  feed:
+  read:
     runs-on: ubuntu-latest
     timeout-minutes: 25
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+    outputs:
+      ok: ${{ steps.report.outputs.ok }}
+      issues: ${{ steps.report.outputs.issues }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -34,11 +34,41 @@ jobs:
           test -s out/leases.json || { echo "No feed was produced; keeping the last published one."; exit 1; }
           mkdir -p _site
           cp out/leases.json _site/leases.json
+      - id: report
+        name: Check the report
+        run: |
+          node -e "const r=require('./out/leases-report.json'); console.log('ok=' + (r.ok ? 'true' : 'false')); console.log('issues=' + r.issues.join('; '))" >> "$GITHUB_OUTPUT"
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
-      - id: deploy
+  publish:
+    needs: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.try1.outputs.page_url || steps.try2.outputs.page_url || steps.try3.outputs.page_url }}
+    steps:
+      # GitHub sometimes cannot see a just-uploaded package for a few seconds (actions/deploy-pages issue 451).
+      - id: try1
+        uses: actions/deploy-pages@v5
+        continue-on-error: true
+      - if: steps.try1.outcome == 'failure'
+        run: sleep 30
+      - id: try2
+        if: steps.try1.outcome == 'failure'
+        uses: actions/deploy-pages@v5
+        continue-on-error: true
+      - if: steps.try1.outcome == 'failure' && steps.try2.outcome == 'failure'
+        run: sleep 90
+      - id: try3
+        if: steps.try1.outcome == 'failure' && steps.try2.outcome == 'failure'
         uses: actions/deploy-pages@v5
       - name: Alert if any source failed
-        run: node -e "const r=require('./out/leases-report.json'); if(!r.ok){console.log(r.issues.join('\n')); process.exit(1)}"
+        if: needs.read.outputs.ok != 'true'
+        env:
+          ISSUES: ${{ needs.read.outputs.issues }}
+        run: |
+          echo "Lease feed published, but these sources had problems: $ISSUES"
+          exit 1
