@@ -13,6 +13,7 @@ const SOURCES = [
   { id: 'nebraska', name: 'Nebraska Board of Educational Lands and Funds', url: 'https://belf.nebraska.gov/recleases.html', parse: (s, p) => S.parseNebraska(s, p.text, p.links) },
   { id: 'growingassets', name: 'Growing Assets', url: 'https://growingassetsllc.com/hunting-leases/', parse: (s, p) => S.parseGrowingAssets(s, p.text, p.links) },
   { id: 'afm', name: 'American Forest Management', url: 'https://afmhuntportal.com/huntersportal', parse: (s, p) => M.parseAfm(s, p.text) },
+  { id: 'bluesky', name: 'Blue Sky Real Estate', url: 'https://www.blueskyparealestate.com/hunting-properties-2/', parse: (s, p) => M.parseBlueSky(s, p.text, p.links) },
   { id: 'ushunts', name: 'US Hunts', url: 'https://ushunts.com/collections/available-leases', parse: (s, p) => S.parseUsHunts(s, p.text, p.products, p.states) },
 ];
 
@@ -61,6 +62,13 @@ try {
             if (x.price) { l.price = x.price; l.priceText = x.priceText; }
             if (x.acres) l.acres = x.acres;
           } catch (e) { l.detailError = String(e.message || e).slice(0, 120); }
+          await new Promise(z => setTimeout(z, 1500));
+        }
+      }
+      if (s.id === 'bluesky') {
+        for (const l of r.leases) {
+          try { const d = await grab(ctx, l.url); l.price = M.parseBlueSkyDetail(d.text); l.priceText = l.price ? `$${l.price} annual fee` : null; await d.page.close(); }
+          catch (e) { l.detailError = String(e.message || e).slice(0, 120); }
           await new Promise(z => setTimeout(z, 1500));
         }
       }

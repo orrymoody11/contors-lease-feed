@@ -5,7 +5,7 @@
 // when the lister's own page is also in the feed.
 import fs from 'node:fs';
 
-export const KIND = { premier: 'timber', greendiamond: 'timber', legacy: 'timber', kingwood: 'timber', ctc: 'timber', bird: 'timber', campbell: 'timber', tir: 'timber', afm: 'timber',
+export const KIND = { premier: 'timber', greendiamond: 'timber', legacy: 'timber', kingwood: 'timber', ctc: 'timber', bird: 'timber', campbell: 'timber', tir: 'timber', afm: 'timber', bluesky: 'timber',
   forecon: 'timber', bullcreek: 'timber', larson: 'timber', growingassets: 'timber', afoa: 'market', ushunts: 'market', nebraska: 'public' };
 export const ORBIS_URL = { premier: 'https://www.premierhuntingleases.com/AvailableAreas/SearchProperties.aspx', greendiamond: 'https://www.gdrecreation.com/AvailableAreas/SearchProperties.aspx',
   legacy: 'https://huntingleases.legacywildlife.com/AvailableAreas/SearchProperties.aspx', kingwood: 'https://hunt.kingwoodforestry.com/AvailableAreas/SearchProperties.aspx',

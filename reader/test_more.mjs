@@ -13,4 +13,12 @@ assert.deepEqual(['state', 'county', 'acres', 'price'].map(k => by(r, 'afm:10000
 assert.deepEqual(['state', 'county', 'acres', 'price'].map(k => by(r, 'afm:100002')[k]), ['LA', 'Beauregard', 169.13, 1139.94]);
 r = check(M.parseAfm(src('afm', 'AFM', 'u'), 'Available Properties\nLoading'));
 assert.equal(r.ok, false);
+const links = (n) => F(n).split('\n').filter(Boolean).map(l => ({ href: l.split('|')[0], text: l.split('|')[1] }));
+r = check(M.parseBlueSky(src('bluesky', 'Blue Sky Real Estate', 'u'), F('bluesky.txt'), links('bluesky.links.txt')));
+assert.equal(r.ok, true, r.problem); assert.equal(r.leases.length, 3);
+assert.deepEqual(r.leases.map(l => [l.acres, l.county, l.state, l.url.split('/')[4]]), [[60, 'Clearfield', 'PA', 'huston-60'], [19.5, 'Clearfield', 'PA', 'huston-19'], [20, 'McKean', 'PA', 'lafayette-20']]);
+r = check(M.parseBlueSky(src('bluesky', 'B', 'u'), F('bluesky.txt'), links('bluesky.links.txt').slice(1)));
+assert.equal(r.ok, false);
+assert.equal(M.parseBlueSkyDetail('ADDRESS:\nANNUAL FEE: $2,280 – payable to X'), 2280);
+assert.equal(M.parseBlueSkyDetail('no fee here'), null);
 console.log('all new-reader tests passed');
