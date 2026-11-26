@@ -1,7 +1,7 @@
 {
  "fatal": null,
- "started": "2026-11-26T00:07:54.785Z",
- "finished": "2026-11-26T00:09:39.555Z",
+ "started": "2026-11-26T00:11:32.569Z",
+ "finished": "2026-11-26T00:13:57.592Z",
  "sources": [
   {
    "id": "forecon",
@@ -11,7 +11,10 @@
    "count": 7,
    "expected": 7,
    "problem": null,
-   "skipped": []
+   "skipped": [],
+   "attempts": 1,
+   "seen": null,
+   "pageTitle": "Available HuntLease Listings | FORECON Inc."
   },
   {
    "id": "bullcreek",
@@ -23,7 +26,10 @@
    "problem": null,
    "skipped": [
     "2 Primitive Lots on Caddo Lake"
-   ]
+   ],
+   "attempts": 1,
+   "seen": null,
+   "pageTitle": "Bull Creek Leasing - AVAILABLE LEASES"
   },
   {
    "id": "afoa",
@@ -33,7 +39,10 @@
    "count": 2,
    "expected": 2,
    "problem": null,
-   "skipped": []
+   "skipped": [],
+   "attempts": 1,
+   "seen": null,
+   "pageTitle": "Hunting Land Leases - AFOA"
   },
   {
    "id": "larson",
@@ -43,7 +52,10 @@
    "count": 1,
    "expected": 1,
    "problem": null,
-   "skipped": []
+   "skipped": [],
+   "attempts": 1,
+   "seen": null,
+   "pageTitle": "Properties | Larson & McGowin"
   },
   {
    "id": "nebraska",
@@ -66,7 +78,10 @@
     "Lincoln County 16-12-28W",
     "Rock County 16,21-32N-17W",
     "Wheeler County 16-21-12W"
-   ]
+   ],
+   "attempts": 1,
+   "seen": null,
+   "pageTitle": "Recleases - Board of Educational Lands and Funds"
   },
   {
    "id": "growingassets",
@@ -76,7 +91,10 @@
    "count": 2,
    "expected": 2,
    "problem": null,
-   "skipped": []
+   "skipped": [],
+   "attempts": 1,
+   "seen": null,
+   "pageTitle": "Hunting Leases – Growing Assets LLC"
   },
   {
    "id": "afm",
@@ -86,17 +104,23 @@
    "count": 10,
    "expected": 10,
    "problem": null,
-   "skipped": []
+   "skipped": [],
+   "attempts": 1,
+   "seen": null,
+   "pageTitle": "Index - American Forest Management"
   },
   {
    "id": "bluesky",
    "name": "Blue Sky Real Estate",
-   "ok": false,
+   "ok": true,
    "http": 200,
-   "count": 0,
-   "expected": null,
-   "problem": "read 0, page shows null",
-   "skipped": []
+   "count": 5,
+   "expected": 5,
+   "problem": null,
+   "skipped": [],
+   "attempts": 1,
+   "seen": "18999 chars, 43 listings, 43 listing links",
+   "pageTitle": "HUNTING PROPERTIES FOR LEASE IN PENNSYLVANIA WILDS – Blue Sky Real Estate"
   },
   {
    "id": "ushunts",
@@ -114,7 +138,10 @@
     "filter.p.m.custom.state=Arizona",
     "filter.p.m.custom.state=Kansas",
     "filter.p.m.custom.state=Oklahoma"
-   ]
+   ],
+   "attempts": 1,
+   "seen": null,
+   "pageTitle": "Available Leases"
   }
  ]
 }

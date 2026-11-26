@@ -129,10 +129,10 @@ platform readers exit=0
  ],
  [
   "bluesky",
-  false,
-  0,
-  null,
-  "read 0, page shows null"
+  true,
+  5,
+  5,
+  ""
  ],
  [
   "ushunts",
@@ -148,10 +148,8 @@ other readers exit=0
 {
  "count": 110,
  "states": 17,
- "ok": false,
- "issues": [
-  "bluesky: read 0, page shows null"
- ]
+ "ok": true,
+ "issues": []
 }
 + echo 'combine exit=0'
 combine exit=0

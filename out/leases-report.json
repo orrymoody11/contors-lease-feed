@@ -1,12 +1,11 @@
 {
- "updated": "2026-11-26T00:09:39.585Z",
- "ok": false,
- "issues": [
-  "bluesky: read 0, page shows null"
- ],
+ "updated": "2026-11-26T00:13:57.625Z",
+ "ok": true,
+ "issues": [],
  "leftOutSmall": [
   "greendiamond:MS-10339 (9 acres)",
-  "kingwood:MC-AR-3081-01 (3 acres)"
+  "kingwood:MC-AR-3081-01 (3 acres)",
+  "bluesky:9-acre-warsaw-township-jefferson-county-pa (9 acres)"
  ],
  "droppedCopies": [
   "afoa:9-2-2026-tishomingo-80 (same as Growing Assets)"
