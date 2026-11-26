@@ -33,7 +33,7 @@ export function fromOther(l) {
   const out = { id: l.id, sourceId: l.sourceId, source: l.source, kind: KIND[l.sourceId] || 'timber', url: l.url, unit: l.id.split(':').slice(1).join(':'), name: l.name,
     state: l.state, county: countyName(l.county, l.state), acres: l.acres, price: l.price, per: l.per && /season/.test(l.per) ? 'season' : l.per && /year/.test(l.per) ? 'year' : null,
     term: l.term ? l.term.replace(/\s+thru\s+/i, ' to ') : l.term, note: l.note };
-  if (l.sourceId === 'growingassets' && /\/acre/i.test(l.priceText || '')) { out.pricePerAcre = num(l.priceText); out.per = 'year'; out.note = `$${out.pricePerAcre.toFixed(2)} an acre plus insurance; the lister does not say if it is billed yearly or by season.`; }
+  if (l.sourceId === 'growingassets' && /\/acre/i.test(l.priceText || '')) { out.pricePerAcre = num(l.priceText); out.per = null; out.note = `$${out.pricePerAcre.toFixed(2)} an acre plus insurance; the lister does not say if it is billed yearly or by season.`; }
   if (l.sourceId === 'ushunts') out.note = l.note;
   if (l.sourceId === 'forecon') { out.note = 'Call or email the forester for the price.'; out.posted = l.posted; }
   if (l.sourceId === 'afoa') out.posted = l.posted;
