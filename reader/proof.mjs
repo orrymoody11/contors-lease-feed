@@ -12,7 +12,6 @@ const SOURCES = (process.env.SOURCES_JSON ? JSON.parse(process.env.SOURCES_JSON)
   { id: 'ctc',      name: 'Coastal Timberlands Company',  url: 'https://ctchunting.com/AvailableAreas/SearchProperties.aspx' },
   { id: 'bird',     name: 'Bird Forestry',                url: 'https://hunt.birdforestry.com/AvailableAreas/SearchProperties.aspx' },
   { id: 'campbell', name: 'Campbell Global',              url: 'https://www.cglease.com/AvailableAreas/SearchProperties.aspx' },
-  { id: 'tir',      name: 'TIR Hunting Leases',           url: 'https://rlms.myoutdooragent.com/tir_HL/AvailableAreas/SearchProperties.aspx' },
 ]);
 
 export const ACCESS = /\b(obtain|arrange|secure|provide|get)\b[^.\n]{0,40}\baccess\b|\bno (legal |deeded |road )?access\b|\baccess (is )?not (provided|available|included)\b/i;

@@ -5,12 +5,15 @@
 // when the lister's own page is also in the feed.
 import fs from 'node:fs';
 
-export const KIND = { premier: 'timber', greendiamond: 'timber', legacy: 'timber', kingwood: 'timber', ctc: 'timber', bird: 'timber', campbell: 'timber', tir: 'timber', afm: 'timber', bluesky: 'timber',
+export const KIND = { premier: 'timber', greendiamond: 'timber', legacy: 'timber', kingwood: 'timber', ctc: 'timber', bird: 'timber', campbell: 'timber', afm: 'timber', bluesky: 'timber',
   forecon: 'timber', bullcreek: 'timber', larson: 'timber', growingassets: 'timber', afoa: 'market', ushunts: 'market', nebraska: 'public' };
 export const ORBIS_URL = { premier: 'https://www.premierhuntingleases.com/AvailableAreas/SearchProperties.aspx', greendiamond: 'https://www.gdrecreation.com/AvailableAreas/SearchProperties.aspx',
   legacy: 'https://huntingleases.legacywildlife.com/AvailableAreas/SearchProperties.aspx', kingwood: 'https://hunt.kingwoodforestry.com/AvailableAreas/SearchProperties.aspx',
   ctc: 'https://ctchunting.com/AvailableAreas/SearchProperties.aspx', bird: 'https://hunt.birdforestry.com/AvailableAreas/SearchProperties.aspx',
-  campbell: 'https://www.cglease.com/AvailableAreas/SearchProperties.aspx', tir: 'https://rlms.myoutdooragent.com/tir_HL/AvailableAreas/SearchProperties.aspx' };
+  campbell: 'https://www.cglease.com/AvailableAreas/SearchProperties.aspx' };
+// Sources removed on purpose (their terms bar automated reading). Their old listings and status are dropped
+// at once rather than carried over as a failure. tir: hosted on a My Outdoor Agent subdomain; MOA terms ban bots.
+export const RETIRED = new Set(['tir']);
 const MIN_ACRES = 10, STALE_DAYS = 3, DROP_SHARE = 0.5, DROP_MIN = 4;
 const num = (s) => { if (s == null) return null; const n = Number(String(s).replace(/[^\d.]/g, '')); return Number.isFinite(n) && n > 0 ? n : null; };
 const dt = (s) => { const m = String(s || '').match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/); if (m) return `${m[3]}-${m[1].padStart(2, '0')}-${m[2].padStart(2, '0')}`; const d = new Date(s); return isNaN(d) ? null : d.toISOString().slice(0, 10); };
@@ -44,7 +47,8 @@ export function fromOther(l) {
   return out;
 }
 
-export function combine({ orbisFeed, orbisReport, feed7, report7, prev, now = new Date() }) {
+export function combine({ orbisFeed, orbisReport, feed7, report7, prev: prevIn, now = new Date() }) {
+  const prev = prevIn && { ...prevIn, leases: (prevIn.leases || []).filter(l => !RETIRED.has(l.sourceId)), sources: (prevIn.sources || []).filter(s => !RETIRED.has(s.id)) };
   const nowIso = now.toISOString();
   const status = {};
   for (const s of orbisReport?.sources || []) status[s.id] = { id: s.id, name: s.name, ok: !!s.ok && !orbisReport.fatal, count: s.count, problem: s.note || null };

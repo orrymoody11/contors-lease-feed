@@ -52,4 +52,8 @@ assert.equal(feed.leases.filter(l => l.sourceId === 'premier').length, 0);
 // a reader that vanished from the run entirely is a failure, not "zero leases"
 ({ feed, report } = combine({ orbisFeed: orbisFeed(), orbisReport: orbisReport(), feed7: { leases: [] }, report7: { sources: [] }, prev: first, now: T1 }));
 assert.match(report.issues.join(), /bullcreek: not in this run/); assert.ok(feed.leases.find(l => l.sourceId === 'bullcreek'));
+// a retired source leaves at once: no carried listings, no failure alert
+{ const withTir = { ...first, leases: [...first.leases, { ...first.leases[0], id: 'tir:X', sourceId: 'tir', source: 'TIR' }], sources: [...first.sources, { id: 'tir', name: 'TIR', ok: true, count: 1 }] };
+  ({ feed, report } = combine({ orbisFeed: orbisFeed(), orbisReport: orbisReport(), feed7, report7, prev: withTir, now: T1 }));
+  assert.equal(feed.leases.filter(l => l.sourceId === 'tir').length, 0); assert.ok(!feed.sources.find(s => s.id === 'tir')); assert.doesNotMatch(report.issues.join(), /tir/); }
 console.log('all combine tests passed');
