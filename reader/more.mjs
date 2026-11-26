@@ -49,7 +49,7 @@ export function parseBlueSky(src, text, links) {
       acres: ac ? num(ac[1]) : null, county: co ? cleanCounty(co[1]) : null, state: st ? 'PA' : null, per: 'year' }));
   });
   // every block must have its own link, or the links are out of step with the text
-  return { leases, expected: ends.length && ends.length === urls.length ? open : null };
+  return { leases, expected: ends.length && ends.length === urls.length ? open : null, seen: `${text.length} chars, ${ends.length} listings, ${urls.length} listing links` };
 }
 export function parseBlueSkyDetail(text) {
   const m = text.match(/ANNUAL FEE:\s*\$\s*([\d,]+(?:\.\d+)?)/i);

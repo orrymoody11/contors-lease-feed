@@ -35,9 +35,11 @@ try {
   for (const s of SOURCES) {
     const ctx = await browser.newContext();
     const r = { id: s.id, name: s.name, url: s.url, ok: false, leases: [] };
+    for (let attempt = 1; attempt <= 2; attempt++) {
+    r.leases = []; r.problem = null; r.ok = false;
     try {
       const p = await grab(ctx, s.url);
-      r.http = p.http;
+      r.http = p.http; r.pageTitle = await p.page.title().catch(() => null);
       if (s.id === 'ushunts') {
         const j = await p.page.request.get('https://ushunts.com/collections/available-leases/products.json?limit=250');
         if (!j.ok()) throw new Error('product feed HTTP ' + j.status());
@@ -74,6 +76,10 @@ try {
       }
       S.check(r);
     } catch (e) { r.problem = 'Error: ' + String(e.message || e).slice(0, 300); }
+    r.attempts = attempt;
+    if (r.ok || attempt === 2) break;
+    await new Promise(z => setTimeout(z, 20000)); // one retry after a pause: a page that failed to load once often loads the second time
+    }
     await ctx.close();
     results.push(r);
     await new Promise(z => setTimeout(z, 3000));
@@ -83,6 +89,6 @@ try {
 
 fs.mkdirSync('out', { recursive: true });
 const finished = new Date().toISOString();
-fs.writeFileSync('out/report7.json', JSON.stringify({ fatal, started, finished, sources: results.map(r => ({ id: r.id, name: r.name, ok: r.ok, http: r.http, count: r.leases.length, expected: r.expected, problem: r.problem || null, skipped: r.skipped || [], stateFilter: r.stateFilter })) }, null, 1));
+fs.writeFileSync('out/report7.json', JSON.stringify({ fatal, started, finished, sources: results.map(r => ({ id: r.id, name: r.name, ok: r.ok, http: r.http, count: r.leases.length, expected: r.expected, problem: r.problem || null, skipped: r.skipped || [], stateFilter: r.stateFilter, attempts: r.attempts, seen: r.seen || null, pageTitle: r.pageTitle || null })) }, null, 1));
 fs.writeFileSync('out/feed7.json', JSON.stringify({ updated: finished, leases: results.flatMap(r => r.leases) }, null, 1));
 console.log(JSON.stringify(results.map(r => [r.id, r.ok, r.leases.length, r.expected, r.problem || '']), null, 1));
