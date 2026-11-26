@@ -1,7 +1,7 @@
 {
  "fatal": null,
- "started": "2026-11-26T01:50:56.012Z",
- "finished": "2026-11-26T01:53:14.257Z",
+ "started": "2026-11-26T02:20:35.755Z",
+ "finished": "2026-11-26T02:23:13.408Z",
  "sources": [
   {
    "id": "forecon",
@@ -121,6 +121,32 @@
    "attempts": 1,
    "seen": "18999 chars, 43 listings, 43 listing links",
    "pageTitle": "HUNTING PROPERTIES FOR LEASE IN PENNSYLVANIA WILDS – Blue Sky Real Estate"
+  },
+  {
+   "id": "redrock",
+   "name": "Red Rock Wildlife",
+   "ok": true,
+   "http": 200,
+   "count": 2,
+   "expected": 2,
+   "problem": null,
+   "skipped": [],
+   "attempts": 1,
+   "seen": "8489 chars, 14 status buttons, 14 well-formed cards",
+   "pageTitle": "Hunting Leases - Red Rock Wildlife"
+  },
+  {
+   "id": "martinranch",
+   "name": "Martin Ranch Management",
+   "ok": true,
+   "http": 200,
+   "count": 1,
+   "expected": 1,
+   "problem": null,
+   "skipped": [],
+   "attempts": 1,
+   "seen": "2026 list, 1 rows",
+   "pageTitle": "Martin Ranch Hunting Leases"
   },
   {
    "id": "ushunts",

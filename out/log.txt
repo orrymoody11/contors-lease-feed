@@ -3,6 +3,7 @@ v22.23.5
 + node reader/test7.mjs
 all reader tests passed
 + node reader/test_more.mjs
+red rock and martin ranch tests passed
 all new-reader tests passed
 + node reader/test_combine.mjs
 all combine tests passed
@@ -128,6 +129,20 @@ platform readers exit=0
   ""
  ],
  [
+  "redrock",
+  true,
+  2,
+  2,
+  ""
+ ],
+ [
+  "martinranch",
+  true,
+  1,
+  1,
+  ""
+ ],
+ [
   "ushunts",
   true,
   7,
@@ -139,8 +154,8 @@ platform readers exit=0
 other readers exit=0
 + node reader/combine.mjs
 {
- "count": 108,
- "states": 17,
+ "count": 111,
+ "states": 18,
  "ok": true,
  "issues": []
 }
