@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import * as M from './more.mjs';
 import { check } from './sources.mjs';
+import { fromOther } from './combine.mjs';
 const F = (n) => fs.readFileSync(new URL(`./fixtures/${n}`, import.meta.url), 'utf8');
 const src = (id, name, url) => ({ id, name, url });
 const by = (r, id) => r.leases.find(l => l.id === id);
@@ -30,3 +31,20 @@ import('./combine.mjs').then(({ fromOrbis, fromOther }) => {
   assert.equal(fromOther({ ...a, sourceId: 'afm' }).per, null);
   console.log('all new-reader tests passed');
 });
+
+// Red Rock Wildlife: only "Available" cards, county or "the <town> area"
+{ const t = fs.readFileSync(new URL('./fixtures/redrock.txt', import.meta.url), 'utf8');
+  const r = M.parseRedRock({ id: 'redrock', name: 'Red Rock Wildlife', url: 'https://redrockwildlife.com/hunting-leases/' }, t);
+  assert.equal(r.leases.length, 2); assert.equal(r.expected, 2);
+  const h = r.leases.find(l => l.acres === 320); assert.equal(h.state, 'KS'); assert.equal(h.place, 'the Horton area, Kansas'); assert.equal(h.county, null);
+  const o = r.leases.find(l => l.acres === 73); assert.equal(o.state, 'MO'); assert.equal(o.county, 'Holt');
+  const c = fromOther(h); assert.equal(c.county, 'the Horton area, Kansas'); assert.equal(fromOther(o).county, 'Holt County');
+  // a status button that is not in a well-formed card makes the read fail instead of guessing
+  assert.equal(M.parseRedRock({ id: 'redrock', name: 'R' }, t + '\nAvailable').expected, null); }
+
+// Martin Ranch: only the current-year group; an old year reads as none
+{ const t = fs.readFileSync(new URL('./fixtures/martin.txt', import.meta.url), 'utf8'), src = { id: 'martinranch', name: 'Martin Ranch Management', url: 'https://www.martinranch.com/leases/' };
+  const r = M.parseMartinRanch(src, t, [], new Date('2026-11-26T00:00:00Z'));
+  assert.equal(r.leases.length, 1); assert.equal(r.expected, 1); assert.equal(r.leases[0].acres, 1351); assert.equal(r.leases[0].place, 'the Rocksprings area, Texas');
+  const old = M.parseMartinRanch(src, t, [], new Date('2027-07-01T00:00:00Z')); assert.equal(old.leases.length, 0); assert.equal(old.expected, 0); }
+console.log('red rock and martin ranch tests passed');

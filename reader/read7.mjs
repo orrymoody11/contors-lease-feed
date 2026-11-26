@@ -14,6 +14,8 @@ const SOURCES = [
   { id: 'growingassets', name: 'Growing Assets', url: 'https://growingassetsllc.com/hunting-leases/', parse: (s, p) => S.parseGrowingAssets(s, p.text, p.links) },
   { id: 'afm', name: 'American Forest Management', url: 'https://afmhuntportal.com/huntersportal', parse: (s, p) => M.parseAfm(s, p.text) },
   { id: 'bluesky', name: 'Blue Sky Real Estate', url: 'https://www.blueskyparealestate.com/hunting-properties-2/', parse: (s, p) => M.parseBlueSky(s, p.text, p.links) },
+  { id: 'redrock', name: 'Red Rock Wildlife', url: 'https://redrockwildlife.com/hunting-leases/', parse: (s, p) => M.parseRedRock(s, p.text) },
+  { id: 'martinranch', name: 'Martin Ranch Management', url: 'https://www.martinranch.com/leases/', parse: (s, p) => M.parseMartinRanch(s, p.text, p.links) },
   { id: 'ushunts', name: 'US Hunts', url: 'https://ushunts.com/collections/available-leases', parse: (s, p) => S.parseUsHunts(s, p.text, p.products, p.states) },
 ];
 

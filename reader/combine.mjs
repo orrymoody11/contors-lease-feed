@@ -5,7 +5,7 @@
 // when the lister's own page is also in the feed.
 import fs from 'node:fs';
 
-export const KIND = { premier: 'timber', greendiamond: 'timber', legacy: 'timber', kingwood: 'timber', ctc: 'timber', bird: 'timber', campbell: 'timber', afm: 'timber', bluesky: 'timber',
+export const KIND = { premier: 'timber', greendiamond: 'timber', legacy: 'timber', kingwood: 'timber', ctc: 'timber', bird: 'timber', campbell: 'timber', afm: 'timber', bluesky: 'timber', redrock: 'market', martinranch: 'market',
   forecon: 'timber', bullcreek: 'timber', larson: 'timber', growingassets: 'timber', afoa: 'market', ushunts: 'market', nebraska: 'public' };
 export const ORBIS_URL = { premier: 'https://www.premierhuntingleases.com/AvailableAreas/SearchProperties.aspx', greendiamond: 'https://www.gdrecreation.com/AvailableAreas/SearchProperties.aspx',
   legacy: 'https://huntingleases.legacywildlife.com/AvailableAreas/SearchProperties.aspx', kingwood: 'https://hunt.kingwoodforestry.com/AvailableAreas/SearchProperties.aspx',
@@ -34,7 +34,7 @@ export function fromOrbis(l, srcRow) {
 }
 export function fromOther(l) {
   const out = { id: l.id, sourceId: l.sourceId, source: l.source, kind: KIND[l.sourceId] || 'timber', url: l.url, unit: l.id.split(':').slice(1).join(':'), name: l.name,
-    state: l.state, county: countyName(l.county, l.state), acres: l.acres, price: l.price, per: l.per && /season/.test(l.per) ? 'season' : l.per && /year/.test(l.per) ? 'year' : null,
+    state: l.state, county: l.place || countyName(l.county, l.state), acres: l.acres, price: l.price, per: l.per && /season/.test(l.per) ? 'season' : l.per && /year/.test(l.per) ? 'year' : null,
     term: l.term ? l.term.replace(/\s+thru\s+/i, ' to ') : l.term, note: l.note };
   if (l.sourceId === 'growingassets' && /\/acre/i.test(l.priceText || '')) { out.pricePerAcre = num(l.priceText); out.per = null; out.note = `$${out.pricePerAcre.toFixed(2)} an acre plus insurance; the lister does not say if it is billed yearly or by season.`; }
   if (l.sourceId === 'ushunts') out.note = l.note;

@@ -7,7 +7,7 @@ const num = (s) => { if (s == null) return null; const n = Number(String(s).repl
 const cleanCounty = (s) => s ? s.replace(/\s+(county|parish|co\.?)$/i, '').trim().toLowerCase().replace(/\b([a-z])/g, (m) => m.toUpperCase()).replace(/\bMc([a-z])/g, (m, c) => 'Mc' + c.toUpperCase()) : null;
 const lease = (src, o) => ({ id: `${src.id}:${o.unit}`, source: src.name, sourceId: src.id, url: o.url || src.url, name: o.name || null, state: o.state || null,
   county: o.county || null, acres: o.acres ?? null, price: o.price ?? null, priceText: o.priceText || null, per: o.per || null, term: o.term || null,
-  posted: null, auction: null, lat: null, lng: null, note: o.note || null });
+  posted: null, auction: null, lat: null, lng: null, note: o.note || null, place: o.place || null });
 
 // ---------- American Forest Management (hunt portal, several states) ----------
 // The portal gives no lease term, so no billing period is claimed for the price.
@@ -54,4 +54,51 @@ export function parseBlueSky(src, text, links) {
 export function parseBlueSkyDetail(text) {
   const m = text.match(/ANNUAL FEE:\s*\$\s*([\d,]+(?:\.\d+)?)/i);
   return m ? num(m[1]) : null;
+}
+
+const slug2 = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+// ---------- Red Rock Wildlife (Missouri and Kansas leases they manage) ----------
+// Each card: a short heading, one description paragraph, then a status button: "Available" or "Leased for <year>".
+// No prices are posted. A tract with no county named gets "the <town> area" from "just outside <Town>, <State>".
+export function parseRedRock(src, text) {
+  const L = norm(text), leases = [];
+  let statuses = 0, shaped = 0;
+  L.forEach((l, i) => {
+    const open = /^Available$/i.test(l), taken = /^Leased\b/i.test(l);
+    if (!open && !taken) return;
+    statuses++;
+    const head = L[i - 2] || '', para = L[i - 1] || '';
+    if (head.length > 0 && head.length < 100 && para.length > 100) shaped++;
+    if (!open) return;
+    const both = head + ' ' + para;
+    const ac = head.match(/([\d,]+)\s*Acres?\b/i) || para.match(/([\d,]+)[-\s]*acres?\b/i);
+    const co = both.match(/\b([A-Z][a-z]+)\s+County\b/);
+    const st = both.match(/\b(Kansas|Missouri|Iowa|Nebraska|Oklahoma)\b/);
+    const near = para.match(/outside\s+([A-Z][a-z]+),\s*(Kansas|Missouri|Iowa|Nebraska|Oklahoma)\b/);
+    leases.push(lease(src, { unit: slug2(head), name: null, acres: ac ? num(ac[1]) : null, state: stateCode(st ? st[1] : null),
+      county: co ? cleanCounty(co[1]) : null, place: !co && near ? `the ${near[1]} area, ${near[2]}` : null,
+      note: 'Price not posted; contact the lister.' }));
+  });
+  const bad = leases.filter(x => !x.county && !x.place);
+  return { leases, expected: statuses >= 3 && shaped === statuses && !bad.length ? leases.length : null, seen: `${text.length} chars, ${statuses} status buttons, ${shaped} well-formed cards` };
+}
+
+// ---------- Martin Ranch Management (Texas ranch leases they list) ----------
+// The page lists "The following leases are available for <year>", then old samples. Only the first group is read,
+// and only while that year is the current season (June onward counts as the new season).
+export function parseMartinRanch(src, text, links, now = new Date()) {
+  const L = norm(text);
+  const a = L.findIndex(l => /following leases are available for (\d{4})/i.test(l));
+  const b = L.findIndex(l => /samples of our previous listings/i.test(l));
+  if (a < 0 || b < a) return { leases: [], expected: null, seen: 'section markers not found' };
+  const yr = +L[a].match(/(\d{4})/)[1], minYr = now.getUTCMonth() >= 5 ? now.getUTCFullYear() : now.getUTCFullYear() - 1;
+  const rows = L.slice(a + 1, b);
+  if (yr < minYr) return { leases: [], expected: 0, seen: `list is for ${yr}, treated as out of date` };
+  const leases = rows.map(r => {
+    const m = r.match(/^([A-Za-z .]+?)\s+([\d,]+)\s*Acre/i), link = links.find(x => (x.text || '').trim() === r);
+    return lease(src, { unit: slug2(r), name: null, acres: m ? num(m[2]) : null, state: 'TX', place: m ? `the ${m[1].trim()} area, Texas` : null,
+      url: link ? link.href : src.url, note: 'Price not posted; contact the lister.' });
+  });
+  return { leases, expected: rows.length && rows.every(r => /\d\s*Acre/i.test(r)) ? rows.length : null, seen: `${yr} list, ${rows.length} rows` };
 }
