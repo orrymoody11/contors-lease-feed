@@ -1,7 +1,7 @@
 {
  "fatal": null,
- "started": "2026-11-25T23:43:59.732Z",
- "finished": "2026-11-25T23:46:16.040Z",
+ "started": "2026-11-26T00:07:54.785Z",
+ "finished": "2026-11-26T00:09:39.555Z",
  "sources": [
   {
    "id": "forecon",
@@ -91,11 +91,11 @@
   {
    "id": "bluesky",
    "name": "Blue Sky Real Estate",
-   "ok": true,
+   "ok": false,
    "http": 200,
-   "count": 5,
-   "expected": 5,
-   "problem": null,
+   "count": 0,
+   "expected": null,
+   "problem": "read 0, page shows null",
    "skipped": []
   },
   {
