@@ -1,7 +1,7 @@
 {
  "fatal": null,
- "started": "2026-11-26T00:11:00.328Z",
- "finished": "2026-11-26T00:11:32.306Z",
+ "started": "2026-11-26T01:50:25.165Z",
+ "finished": "2026-11-26T01:50:55.687Z",
  "sources": [
   {
    "id": "premier",
@@ -92,19 +92,6 @@
    "title": "Search Properties J.P. Morgan Natural Capital",
    "complete": true,
    "count": 5,
-   "missing": 0
-  },
-  {
-   "id": "tir",
-   "name": "TIR Hunting Leases",
-   "ok": true,
-   "stated": 2,
-   "pages": 1,
-   "note": "",
-   "http": 200,
-   "title": "Search Properties | Premier Hunting Leases",
-   "complete": true,
-   "count": 2,
    "missing": 0
   }
  ]

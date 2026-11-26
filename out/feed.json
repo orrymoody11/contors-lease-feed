@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T00:11:32.306Z",
+ "updated": "2026-11-26T01:50:55.687Z",
  "leases": [
   {
    "source": "Premier Hunting Leases",
@@ -647,24 +647,6 @@
    "place": "Grant, AR",
    "term": "7/1/2026 to 6/30/2027",
    "price": "$196.71",
-   "ownAccess": false
-  },
-  {
-   "source": "TIR Hunting Leases",
-   "unit": "3336666",
-   "acres": "11.00",
-   "place": "Autauga County, AL",
-   "term": "5/1/2025 to 5/31/2027",
-   "price": "$150.00",
-   "ownAccess": false
-  },
-  {
-   "source": "TIR Hunting Leases",
-   "unit": "103400301",
-   "acres": "16.00",
-   "place": "Northampton County, NC",
-   "term": "8/14/2026 to 8/13/2027",
-   "price": "$304.00",
    "ownAccess": false
   }
  ]
