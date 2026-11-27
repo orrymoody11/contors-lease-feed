@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-27T05:20:04.285Z",
+ "updated": "2026-11-27T20:18:25.949Z",
  "leases": [
   {
    "source": "Premier Hunting Leases",
@@ -606,11 +606,11 @@
   },
   {
    "source": "Campbell Global",
-   "unit": "PB-2886",
-   "acres": "37",
+   "unit": "PB-7026",
+   "acres": "174",
    "place": "Dallas, AR",
    "term": "7/1/2026 to 6/30/2027",
-   "price": "$360.59",
+   "price": "$1,568.79",
    "ownAccess": false
   },
   {
@@ -624,11 +624,11 @@
   },
   {
    "source": "Campbell Global",
-   "unit": "PB-7026",
-   "acres": "174",
-   "place": "Dallas, AR",
+   "unit": "PB-7030",
+   "acres": "20",
+   "place": "Grant, AR",
    "term": "7/1/2026 to 6/30/2027",
-   "price": "$1,568.79",
+   "price": "$196.71",
    "ownAccess": false
   },
   {
@@ -638,15 +638,6 @@
    "place": "Tuscaloosa, AL",
    "term": "7/1/2026 to 6/30/2027",
    "price": "$301.36",
-   "ownAccess": false
-  },
-  {
-   "source": "Campbell Global",
-   "unit": "PB-7030",
-   "acres": "20",
-   "place": "Grant, AR",
-   "term": "7/1/2026 to 6/30/2027",
-   "price": "$196.71",
    "ownAccess": false
   }
  ]

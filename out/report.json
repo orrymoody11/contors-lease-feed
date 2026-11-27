@@ -1,7 +1,7 @@
 {
  "fatal": null,
- "started": "2026-11-27T05:19:29.130Z",
- "finished": "2026-11-27T05:20:04.285Z",
+ "started": "2026-11-27T20:17:47.085Z",
+ "finished": "2026-11-27T20:18:25.949Z",
  "sources": [
   {
    "id": "premier",
@@ -85,13 +85,13 @@
    "id": "campbell",
    "name": "Campbell Global",
    "ok": true,
-   "stated": 5,
+   "stated": 4,
    "pages": 1,
    "note": "",
    "http": 200,
    "title": "Search Properties J.P. Morgan Natural Capital",
    "complete": true,
-   "count": 5,
+   "count": 4,
    "missing": 0
   }
  ]

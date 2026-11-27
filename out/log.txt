@@ -63,8 +63,8 @@ found 0 vulnerabilities
  [
   "campbell",
   true,
-  5,
-  5,
+  4,
+  4,
   ""
  ]
 ]
@@ -123,10 +123,10 @@ platform readers exit=0
  ],
  [
   "bluesky",
-  true,
-  5,
-  5,
-  ""
+  false,
+  0,
+  null,
+  "read 0, page shows null"
  ],
  [
   "redrock",
@@ -137,10 +137,10 @@ platform readers exit=0
  ],
  [
   "martinranch",
-  true,
-  1,
-  1,
-  ""
+  false,
+  0,
+  null,
+  "read 0, page shows null"
  ],
  [
   "ushunts",
@@ -154,10 +154,13 @@ platform readers exit=0
 other readers exit=0
 + node reader/combine.mjs
 {
- "count": 111,
+ "count": 110,
  "states": 18,
- "ok": true,
- "issues": []
+ "ok": false,
+ "issues": [
+  "bluesky: read 0, page shows null",
+  "martinranch: read 0, page shows null"
+ ]
 }
 + echo 'combine exit=0'
 combine exit=0
