@@ -1,7 +1,7 @@
 {
  "fatal": null,
- "started": "2026-11-27T20:18:26.243Z",
- "finished": "2026-11-27T20:21:19.154Z",
+ "started": "2026-11-28T04:56:50.448Z",
+ "finished": "2026-11-28T04:59:30.129Z",
  "sources": [
   {
    "id": "forecon",
@@ -112,15 +112,15 @@
   {
    "id": "bluesky",
    "name": "Blue Sky Real Estate",
-   "ok": false,
+   "ok": true,
    "http": 200,
-   "count": 0,
-   "expected": null,
-   "problem": "read 0, page shows null",
+   "count": 5,
+   "expected": 5,
+   "problem": null,
    "skipped": [],
-   "attempts": 2,
-   "seen": "51 chars, 0 listings, 0 listing links",
-   "pageTitle": "One moment, please..."
+   "attempts": 1,
+   "seen": "18999 chars, 43 listings, 43 listing links",
+   "pageTitle": "HUNTING PROPERTIES FOR LEASE IN PENNSYLVANIA WILDS – Blue Sky Real Estate"
   },
   {
    "id": "redrock",
@@ -138,15 +138,15 @@
   {
    "id": "martinranch",
    "name": "Martin Ranch Management",
-   "ok": false,
+   "ok": true,
    "http": 200,
-   "count": 0,
-   "expected": null,
-   "problem": "read 0, page shows null",
+   "count": 1,
+   "expected": 1,
+   "problem": null,
    "skipped": [],
-   "attempts": 2,
-   "seen": "section markers not found",
-   "pageTitle": "One moment, please..."
+   "attempts": 1,
+   "seen": "2026 list, 1 rows",
+   "pageTitle": "Martin Ranch Hunting Leases"
   },
   {
    "id": "ushunts",
