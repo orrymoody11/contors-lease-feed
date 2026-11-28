@@ -1,7 +1,7 @@
 {
  "fatal": null,
- "started": "2026-11-28T04:56:50.448Z",
- "finished": "2026-11-28T04:59:30.129Z",
+ "started": "2026-11-28T15:08:18.961Z",
+ "finished": "2026-11-28T15:13:35.869Z",
  "sources": [
   {
    "id": "forecon",
@@ -14,6 +14,8 @@
    "skipped": [],
    "attempts": 1,
    "seen": null,
+   "pages": 1,
+   "photoCheck": "7 pictures read, 0 stamped",
    "pageTitle": "Available HuntLease Listings | FORECON Inc."
   },
   {
@@ -29,6 +31,8 @@
    ],
    "attempts": 1,
    "seen": null,
+   "pages": 1,
+   "photoCheck": "7 pictures read, 0 stamped",
    "pageTitle": "Bull Creek Leasing - AVAILABLE LEASES"
   },
   {
@@ -42,6 +46,8 @@
    "skipped": [],
    "attempts": 1,
    "seen": null,
+   "pages": 1,
+   "photoCheck": "1 pictures read, 0 stamped",
    "pageTitle": "Hunting Land Leases - AFOA"
   },
   {
@@ -55,6 +61,8 @@
    "skipped": [],
    "attempts": 1,
    "seen": null,
+   "pages": 1,
+   "photoCheck": "1 pictures read, 0 stamped",
    "pageTitle": "Properties | Larson & McGowin"
   },
   {
@@ -81,6 +89,8 @@
    ],
    "attempts": 1,
    "seen": null,
+   "pages": 1,
+   "photoCheck": "14 pictures read, 0 stamped",
    "pageTitle": "Recleases - Board of Educational Lands and Funds"
   },
   {
@@ -94,6 +104,8 @@
    "skipped": [],
    "attempts": 1,
    "seen": null,
+   "pages": 1,
+   "photoCheck": "0 pictures read, 0 stamped",
    "pageTitle": "Hunting Leases – Growing Assets LLC"
   },
   {
@@ -101,12 +113,19 @@
    "name": "American Forest Management",
    "ok": true,
    "http": 200,
-   "count": 10,
-   "expected": 10,
+   "count": 32,
+   "expected": 32,
    "problem": null,
-   "skipped": [],
+   "skipped": [
+    "59485 (Hunt Permit - Drive-in)",
+    "59483 (Hunt Permit - Drive-in)",
+    "59482 (Hunt Permit - Walk-in)",
+    "59480 (Hunt Permit - Walk-in)"
+   ],
    "attempts": 1,
    "seen": null,
+   "pages": 1,
+   "photoCheck": "0 pictures read, 0 stamped",
    "pageTitle": "Index - American Forest Management"
   },
   {
@@ -120,6 +139,8 @@
    "skipped": [],
    "attempts": 1,
    "seen": "18999 chars, 43 listings, 43 listing links",
+   "pages": 1,
+   "photoCheck": "120 pictures read, 0 stamped",
    "pageTitle": "HUNTING PROPERTIES FOR LEASE IN PENNSYLVANIA WILDS – Blue Sky Real Estate"
   },
   {
@@ -133,6 +154,8 @@
    "skipped": [],
    "attempts": 1,
    "seen": "8489 chars, 14 status buttons, 14 well-formed cards",
+   "pages": 1,
+   "photoCheck": "1 pictures read, 0 stamped",
    "pageTitle": "Hunting Leases - Red Rock Wildlife"
   },
   {
@@ -140,12 +163,16 @@
    "name": "Martin Ranch Management",
    "ok": true,
    "http": 200,
-   "count": 1,
-   "expected": 1,
+   "count": 0,
+   "expected": 0,
    "problem": null,
-   "skipped": [],
+   "skipped": [
+    "martinranch:rocksprings-1-351-acre-hunting-lease (picture marked SOLD)"
+   ],
    "attempts": 1,
    "seen": "2026 list, 1 rows",
+   "pages": 1,
+   "photoCheck": "1 pictures read, 1 stamped",
    "pageTitle": "Martin Ranch Hunting Leases"
   },
   {
@@ -167,6 +194,8 @@
    ],
    "attempts": 1,
    "seen": null,
+   "pages": 1,
+   "photoCheck": "9 pictures read, 0 stamped",
    "pageTitle": "Available Leases"
   }
  ]

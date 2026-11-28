@@ -1,10 +1,13 @@
 {
- "updated": "2026-11-28T04:59:30.167Z",
+ "updated": "2026-11-28T15:13:35.906Z",
  "ok": true,
- "issues": [],
+ "issues": [
+  "martinranch: now shows no open leases"
+ ],
  "leftOutSmall": [
   "greendiamond:MS-10339 (9 acres)",
   "kingwood:MC-AR-3081-01 (3 acres)",
+  "afm:60646 (9.22 acres)",
   "bluesky:9-acre-warsaw-township-jefferson-county-pa (9 acres)"
  ],
  "droppedCopies": [

@@ -5,10 +5,30 @@ all reader tests passed
 + node reader/test_more.mjs
 red rock and martin ranch tests passed
 all new-reader tests passed
+page loader tests passed
 + node reader/test_combine.mjs
 all combine tests passed
 + echo 'tests exit=0'
 tests exit=0
++ command -v tesseract
++ sudo apt-get update -qq
++ sudo apt-get install -y -qq tesseract-ocr
+
+Running kernel seems to be up-to-date.
+
+Restarting services...
+
+Service restarts being deferred:
+ systemctl restart hosted-compute-agent.service
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
++ tesseract --version
++ head -1
+tesseract 5.5.0
 + npm init -y
 + npm install playwright
 
@@ -117,8 +137,8 @@ platform readers exit=0
  [
   "afm",
   true,
-  10,
-  10,
+  32,
+  32,
   ""
  ],
  [
@@ -138,8 +158,8 @@ platform readers exit=0
  [
   "martinranch",
   true,
-  1,
-  1,
+  0,
+  0,
   ""
  ],
  [
@@ -154,10 +174,12 @@ platform readers exit=0
 other readers exit=0
 + node reader/combine.mjs
 {
- "count": 110,
- "states": 18,
+ "count": 130,
+ "states": 19,
  "ok": true,
- "issues": []
+ "issues": [
+  "martinranch: now shows no open leases"
+ ]
 }
 + echo 'combine exit=0'
 combine exit=0
