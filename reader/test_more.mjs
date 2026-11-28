@@ -48,3 +48,35 @@ import('./combine.mjs').then(({ fromOrbis, fromOther }) => {
   assert.equal(r.leases.length, 1); assert.equal(r.expected, 1); assert.equal(r.leases[0].acres, 1351); assert.equal(r.leases[0].place, 'the Rocksprings area, Texas');
   const old = M.parseMartinRanch(src, t, [], new Date('2027-07-01T00:00:00Z')); assert.equal(old.leases.length, 0); assert.equal(old.expected, 0); }
 console.log('red rock and martin ranch tests passed');
+
+// Shared page loader (pageload.mjs): pages merge by id; a stamped picture drops only the lease its card names
+{ const P = await import('./pageload.mjs');
+  const blk = (id, st, co, type) => `Property ID:${id}\n\nCounty: ${co}\nState: ${st}\nDistrict: X\nNumber of Tracts:1\n\n100.5 Acres / $1,000.00\nLease Type\n\n${type}\nView Details\n`;
+  const s = { id: 'afm', name: 'American Forest Management', url: 'u' };
+  // AFM's own Lease Type: permits are not leases
+  const one = M.parseAfm(s, blk(1, 'Louisiana', 'Beauregard', 'Hunt Lease') + blk(2, 'Washington', 'Pacific', 'Hunt Permit - Drive-in'));
+  assert.equal(one.leases.length, 1); assert.deepEqual(one.skipped, ['2 (Hunt Permit - Drive-in)']);
+  // two pages, overlapping by one property
+  const p1 = blk(1, 'Louisiana', 'Beauregard', 'Hunt Lease') + blk(3, 'Washington', 'Whatcom', 'Hunt Lease');
+  const p2 = blk(3, 'Washington', 'Whatcom', 'Hunt Lease') + blk(4, 'New York', 'Cattaraugus', 'Hunt Lease');
+  const m = check(P.parsePages(t => M.parseAfm(s, t), [p1, p2]));
+  assert.equal(m.ok, true, m.problem); assert.deepEqual(m.leases.map(l => l.id).sort(), ['afm:1', 'afm:3', 'afm:4']);
+  // a page that fails its own count fails the whole read
+  const p2bad = blk(3, 'Washington', 'Whatcom', 'Hunt Lease') + blk(4, 'New York', 'Cattaraugus', 'Hunt Lease').replace('100.5 Acres / $1,000.00', 'garbled');
+  const bad = check(P.parsePages(t => M.parseAfm(s, t), [p1, p2bad]));
+  assert.equal(bad.ok, false);
+  // stamp matching: acres AND one more detail of that lease
+  const mr = { id: 'martinranch:rocksprings-1-351-acre-hunting-lease', acres: 1351, place: 'the Rocksprings area, Texas', state: 'TX' };
+  assert.equal(P.cardIsLease('Rocksprings 1,351 Acre Hunting Lease', mr), true);
+  assert.equal(P.cardIsLease('Carta Valley 1,351 Acre Hunting Lease', mr), false);   // same acres, other place
+  assert.equal(P.cardIsLease('Rocksprings 3,000 Acre Easy Access', mr), false);      // same place, other acres
+  assert.equal(P.cardIsLease('Rocksprings 11,351 Acre Ranch', mr), false);           // 1,351 inside a bigger number
+  assert.equal(P.cardIsLease('Metal Heavy Duty, No Hunting Sign - 5pack', { id: 'ushunts:x', acres: 560, county: 'Hughes' }), false);
+  const r = check(P.soldFilter({ leases: [mr, { id: 'martinranch:other', acres: 2000, place: 'the Carta Valley area, Texas', state: 'TX' }], expected: 2, skipped: [] },
+    [{ card: 'Rocksprings 1,351 Acre Hunting Lease', word: 'SOLD' }]));
+  assert.equal(r.ok, true, r.problem); assert.deepEqual(r.leases.map(l => l.id), ['martinranch:other']);
+  assert.deepEqual(r.skipped, ['martinranch:rocksprings-1-351-acre-hunting-lease (picture marked SOLD)']);
+  // no stamps: nothing changes
+  assert.equal(P.soldFilter({ leases: [mr], expected: 1 }, []).leases.length, 1);
+  assert.ok(P.STAMP.test('SOLD!') && P.STAMP.test('LEASED BY') && !P.STAMP.test('Hunting Lease') && !P.STAMP.test('soldier creek')); }
+console.log('page loader tests passed');

@@ -22,7 +22,8 @@ export function parseAfm(src, text) {
     const ap = g(/^([\d,.]+)\s*Acres\s*\/\s*\$([\d,.]+)/i);
     const ti = blk.findIndex(l => /^Lease Type$/i.test(l));
     const type = ti >= 0 ? blk[ti + 1] : null;
-    if (type && !/hunt/i.test(type)) { skipped.push(`${id} (${type})`); return; }
+    // AFM's own Lease Type field: only "Hunt Lease"; "Hunt Permit - Drive-in/Walk-in" are day-permit programs, not leases
+    if (type && !/^hunt\s*lease$/i.test(type.trim())) { skipped.push(`${id} (${type})`); return; }
     leases.push(lease(src, { unit: id, name: `Property ${id}`, county: cleanCounty((g(/^County:\s*(.+)$/i) || [])[1]), state: stateCode((g(/^State:\s*(.+)$/i) || [])[1]),
       acres: ap ? num(ap[1]) : null, price: ap ? num(ap[2]) : null, per: null, priceText: ap ? `$${ap[2]}` : null }));
   });

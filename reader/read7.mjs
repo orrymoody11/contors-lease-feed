@@ -4,6 +4,7 @@ import { chromium } from 'playwright';
 import fs from 'node:fs';
 import * as S from './sources.mjs';
 import * as M from './more.mjs';
+import * as P from './pageload.mjs';
 
 const SOURCES = [
   { id: 'forecon', name: 'FORECON', url: 'https://www.foreconinc.com/services/huntlease/available-huntlease-listings', parse: (s, p) => S.parseForecon(s, p.text, p.links) },
@@ -19,14 +20,14 @@ const SOURCES = [
   { id: 'ushunts', name: 'US Hunts', url: 'https://ushunts.com/collections/available-leases', parse: (s, p) => S.parseUsHunts(s, p.text, p.products, p.states) },
 ];
 
-async function grab(ctx, url) {
+async function grab(ctx, url, detail = false) {
   const page = await ctx.newPage();
   const resp = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
   await page.waitForTimeout(4000);
   await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
-  const text = await page.innerText('body');
-  const links = await page.$$eval('a[href]', as => as.map(a => ({ href: a.href, text: (a.textContent || '').trim().slice(0, 80) })));
-  return { page, http: resp ? resp.status() : null, text, links };
+  // every source: load every listing (scroll, "Load more", "Next" pages) and run the photo check
+  const all = await P.loadAll(page, detail ? { photos: false, maxPages: 1 } : {});
+  return { page, http: resp ? resp.status() : null, text: all.texts[0] || '', texts: all.texts, links: all.links, imgs: all.imgs, stamps: all.stamps, photoCheck: all.photoCheck };
 }
 
 const started = new Date().toISOString();
@@ -58,11 +59,13 @@ try {
         }
         r.stateFilter = opts.filter(o => /state/i.test(o.name)).map(o => o.name + '=' + o.value);
       }
-      Object.assign(r, s.parse(s, p));
+      Object.assign(r, P.soldFilter(P.parsePages(t => s.parse(s, { ...p, text: t }), p.texts.length ? p.texts : [p.text]), p.stamps));
+      if (r.pageProblem) r.problem = r.pageProblem;
+      r.photoCheck = p.photoCheck; r.pages = p.texts.length;
       if (s.id === 'nebraska') {
         for (const l of r.leases) {
           if (l.url === s.url) continue;
-          try { const d = await grab(ctx, l.url); const x = S.parseNebraskaDetail(d.text); await d.page.close();
+          try { const d = await grab(ctx, l.url, true); const x = S.parseNebraskaDetail(d.text); await d.page.close();
             if (x.price) { l.price = x.price; l.priceText = x.priceText; }
             if (x.acres) l.acres = x.acres;
           } catch (e) { l.detailError = String(e.message || e).slice(0, 120); }
@@ -71,7 +74,7 @@ try {
       }
       if (s.id === 'bluesky') {
         for (const l of r.leases) {
-          try { const d = await grab(ctx, l.url); l.price = M.parseBlueSkyDetail(d.text); l.priceText = l.price ? `$${l.price} annual fee` : null; await d.page.close(); }
+          try { const d = await grab(ctx, l.url, true); l.price = M.parseBlueSkyDetail(d.text); l.priceText = l.price ? `$${l.price} annual fee` : null; await d.page.close(); }
           catch (e) { l.detailError = String(e.message || e).slice(0, 120); }
           await new Promise(z => setTimeout(z, 1500));
         }
@@ -91,6 +94,6 @@ try {
 
 fs.mkdirSync('out', { recursive: true });
 const finished = new Date().toISOString();
-fs.writeFileSync('out/report7.json', JSON.stringify({ fatal, started, finished, sources: results.map(r => ({ id: r.id, name: r.name, ok: r.ok, http: r.http, count: r.leases.length, expected: r.expected, problem: r.problem || null, skipped: r.skipped || [], stateFilter: r.stateFilter, attempts: r.attempts, seen: r.seen || null, pageTitle: r.pageTitle || null })) }, null, 1));
+fs.writeFileSync('out/report7.json', JSON.stringify({ fatal, started, finished, sources: results.map(r => ({ id: r.id, name: r.name, ok: r.ok, http: r.http, count: r.leases.length, expected: r.expected, problem: r.problem || null, skipped: r.skipped || [], stateFilter: r.stateFilter, attempts: r.attempts, seen: r.seen || null, pages: r.pages || null, photoCheck: r.photoCheck || null, pageTitle: r.pageTitle || null })) }, null, 1));
 fs.writeFileSync('out/feed7.json', JSON.stringify({ updated: finished, leases: results.flatMap(r => r.leases) }, null, 1));
 console.log(JSON.stringify(results.map(r => [r.id, r.ok, r.leases.length, r.expected, r.problem || '']), null, 1));

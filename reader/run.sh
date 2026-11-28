@@ -7,6 +7,9 @@ mkdir -p out
   node -v
   node reader/test7.mjs && node reader/test_more.mjs && node reader/test_combine.mjs
   echo "tests exit=$?"
+  # photo check (reader/pageload.mjs): reads SOLD/LEASED stamps on listing pictures
+  command -v tesseract >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq tesseract-ocr >/dev/null; }
+  tesseract --version | head -1
   npm init -y >/dev/null 2>&1
   npm install playwright && npx playwright install --with-deps chromium >/dev/null 2>&1 && node reader/proof.mjs
   echo "platform readers exit=$?"
